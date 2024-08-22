@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../Components/Card";
 import { getMenus } from "../Services/menus";
+import { Navbar } from "../Components/Navbar";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -15,6 +16,8 @@ const Menu = () => {
   }, []);
   return (
     <main>
+      <Navbar></Navbar>
+
       {menus &&
         menus.map((Menu: any) => {
           return (

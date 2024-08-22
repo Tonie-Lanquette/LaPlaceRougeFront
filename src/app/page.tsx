@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { sendBooking } from "./Services/booking";
 import toast, { Toaster } from "react-hot-toast";
+import { Navbar } from "./Components/Navbar";
 
 export default function Home() {
   const [startDate, setStartDate] = useState(new Date());
@@ -116,10 +116,12 @@ export default function Home() {
 
   return (
     <main className="">
+      <Navbar></Navbar>
       <Toaster position="top-right"></Toaster>
       <div className="w-1/2 text-center m-auto text-xl space-y-4">
         <h1 className="text-2xl font-bold">
-          Bienvenue à La Place <span className="text-[#FF0202]">R</span>ouge !
+          Bienvenue à La Place{" "}
+          <span className="text-[#FF0202] text-2xl">R</span>ouge !
         </h1>
         <p>
           Découvrez la cuisine russe traditionnelle, sublimée par des produits
