@@ -8,10 +8,33 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+body {
+  background-color: #fff8ed;
+}
 
+* {
+  font-family: "Josefin Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 18px;
+}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+/* .react-datepicker {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #f0f0f0;
+}
+
+.react-datepicker__day--selected {
+  background-color: #ff0202;
+  color: white;
+} */
