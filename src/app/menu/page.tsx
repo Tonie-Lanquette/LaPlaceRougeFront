@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../Components/Card";
 import { getMenus } from "../Services/menus";
 import { Navbar } from "../Components/Navbar";
+import { PhotoHeader } from "../Components/PhotoHeader";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -17,6 +18,7 @@ const Menu = () => {
   return (
     <main>
       <Navbar></Navbar>
+      <PhotoHeader title={"Menus"}></PhotoHeader>
 
       {menus &&
         menus.map((Menu: any) => {
