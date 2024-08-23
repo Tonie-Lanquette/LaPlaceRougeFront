@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../Components/Card";
 import { getDishies } from "../Services/dishies";
 import { Navbar } from "../Components/Navbar";
+import { PhotoHeader } from "../Components/PhotoHeader";
 
 const Carte = () => {
   const [dishies, setDishies] = useState([]);
@@ -30,6 +31,7 @@ const Carte = () => {
   return (
     <main>
       <Navbar></Navbar>
+      <PhotoHeader title={"La carte"}></PhotoHeader>
 
       <section>
         <h2 className="w-full py-5 bg-white text-2xl text-center">Entrée</h2>

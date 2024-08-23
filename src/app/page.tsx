@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { sendBooking } from "./Services/booking";
 import toast, { Toaster } from "react-hot-toast";
 import { Navbar } from "./Components/Navbar";
+import { PhotoHeader } from "./Components/PhotoHeader";
 
 export default function Home() {
   const [startDate, setStartDate] = useState(new Date());
@@ -117,6 +118,20 @@ export default function Home() {
   return (
     <main className="">
       <Navbar></Navbar>
+
+      <div
+        className=" bg-cover h-80 relative bg-center mb-10"
+        style={{
+          backgroundImage: `url(images/photoAccueil.jpg)`,
+        }}
+      >
+        <img
+          src="images/logo.png"
+          alt="Logo du restaurant La Place Rouge"
+          className="absolute top-[-60px] left-1/2 transform -translate-x-1/2 hidden lg:block"
+        />
+      </div>
+
       <Toaster position="top-right"></Toaster>
       <div className="w-1/2 text-center m-auto text-xl space-y-4">
         <h1 className="text-2xl font-bold">
