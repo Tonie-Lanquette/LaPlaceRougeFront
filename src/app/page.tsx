@@ -3,23 +3,48 @@
 import { useEffect, useState } from "react";
 import { getPicturesDishies } from "./Services/dishies";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { sendBooking } from "./Services/booking";
+import { getMaxNumberPeople, sendBooking } from "./Services/booking";
 import toast, { Toaster } from "react-hot-toast";
 import { Navbar } from "./Components/Navbar";
-import { PhotoHeader } from "./Components/PhotoHeader";
+import { fr as localeFr } from "date-fns/locale";
+import { Locale } from "date-fns";
+
+registerLocale("fr", localeFr as Locale);
 
 export default function Home() {
   const [startDate, setStartDate] = useState(new Date());
 
   const [pictures, setPictures] = useState([]);
 
-  const [numberPeople, setNumberPeople] = useState(1);
+  const [maxNumberPeople, setMaxNumberPeople] = useState(0);
+  const [numberPeople, setNumberPeople] = useState(maxNumberPeople);
   const [shift, setShift] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (shift == "day" || shift == "night") {
+      if (startDate instanceof Date) {
+        let year = startDate.getFullYear();
+        let month = startDate.getMonth() + 1;
+        let date = startDate.getDate();
+
+        let dateBooking = year + "-" + month + "-" + date;
+
+        let dataDay = {
+          date: dateBooking,
+          shift: shift,
+        };
+
+        getMaxNumberPeople(dataDay).then((res) => {
+          setMaxNumberPeople(res.data.numberPeople);
+        });
+      }
+    }
+  }, [shift, startDate]);
 
   useEffect(() => {
     getPicturesDishies().then((res: any) => {
@@ -31,15 +56,18 @@ export default function Home() {
     if (numberPeople > 1) {
       setNumberPeople(numberPeople - 1);
     } else {
-      setNumberPeople(1);
+      setNumberPeople(maxNumberPeople);
     }
   }
 
   function plusOne() {
-    if (numberPeople < 100) {
+    if (numberPeople < maxNumberPeople) {
       setNumberPeople(numberPeople + 1);
     } else {
-      setNumberPeople(100);
+      setNumberPeople(1);
+      toast.error(
+        `Il ne reste plus que ` + maxNumberPeople + ` places pour ce jour.`
+      );
     }
   }
 
@@ -56,23 +84,21 @@ export default function Home() {
 
         let dateBooking = year + "-" + month + "-" + date;
 
-        if (numberPeople >= 1 && numberPeople <= 100) {
+        if (numberPeople >= 1 && numberPeople <= maxNumberPeople) {
           if (shift == "day" || shift == "night") {
             if (firstname.length <= 50) {
               if (lastname.length <= 50) {
                 if (checkEmail(email)) {
                   let booking = {
-                    date: dateBooking,
-                    number_people: numberPeople,
-                    shift: shift,
                     firstname: firstname,
                     lastname: lastname,
+                    date: dateBooking,
                     email: email,
+                    shift: shift,
+                    numberPeople: numberPeople,
                   };
 
                   sendBooking(booking).then((res) => {
-                    console.log(res);
-
                     if (res.status === 201) {
                       toast.success(
                         "Votre réservation à été réalisé avec succès."
@@ -166,7 +192,7 @@ export default function Home() {
           pictures.map((picture: any) => {
             return (
               <img
-                className="w-1/6 h-fit"
+                className="w-1/6 h-12 sm:h-16 md:h-20 lg:h-32 object-cover"
                 src={picture.picture}
                 alt="Image d'un plat"
               />
@@ -191,6 +217,7 @@ export default function Home() {
               onChange={(date) => setStartDate(date)}
               inline
               minDate={new Date()}
+              locale="fr"
             />
           </section>
 
