@@ -115,11 +115,11 @@ export default function Home() {
   }
 
   return (
-    <main className="">
+    <main className="font-sans">
       <Navbar></Navbar>
       <Toaster position="top-right"></Toaster>
       <div className="w-1/2 text-center m-auto text-xl space-y-4">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold ">
           Bienvenue à La Place{" "}
           <span className="text-[#FF0202] text-2xl">R</span>ouge !
         </h1>

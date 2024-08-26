@@ -15,7 +15,7 @@ const Menu = () => {
     });
   }, []);
   return (
-    <main>
+    <main className="font-sans">
       <Navbar></Navbar>
 
       {menus &&

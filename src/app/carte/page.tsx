@@ -28,7 +28,7 @@ const Carte = () => {
   }, [dishies]);
 
   return (
-    <main>
+    <main className="font-sans">
       <Navbar></Navbar>
 
       <section>

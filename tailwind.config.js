@@ -7,10 +7,14 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",],
   theme: {
+    fontFamily: {
+      sans: ["Josefin Slab", "serif"],
+      serif: ["Josefin Slab", "serif"],
+    },
     extend: {},
   },
   plugins: [],
 }
 
 
- 
+
