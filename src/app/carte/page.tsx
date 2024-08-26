@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../Components/Card";
 import { getDishies } from "../Services/dishies";
 import { Navbar } from "../Components/Navbar";
+import { PhotoHeader } from "../Components/PhotoHeader";
 
 const Carte = () => {
   const [dishies, setDishies] = useState([]);
@@ -12,24 +13,27 @@ const Carte = () => {
 
   useEffect(() => {
     getDishies().then((res: any) => {
+      console.log("dans la page", res.data);
+
       setDishies(res.data);
     });
   }, []);
 
   useEffect(() => {
-    const entrance = dishies.filter((dish: any) => dish.categorie_id == 1);
+    const entrance = dishies.filter((dish: any) => dish.categories.id == 1);
     setEntrances(entrance);
 
-    const flat = dishies.filter((dish: any) => dish.categorie_id == 2);
+    const flat = dishies.filter((dish: any) => dish.categories.id == 2);
     setFlats(flat);
 
-    const dessert = dishies.filter((dish: any) => dish.categorie_id == 3);
+    const dessert = dishies.filter((dish: any) => dish.categories.id == 3);
     setDesserts(dessert);
   }, [dishies]);
 
   return (
     <main className="font-sans">
       <Navbar></Navbar>
+      <PhotoHeader title={"La carte"}></PhotoHeader>
 
       <section>
         <h2 className="w-full py-5 bg-white text-2xl text-center">Entrée</h2>
