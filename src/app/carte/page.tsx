@@ -13,18 +13,20 @@ const Carte = () => {
 
   useEffect(() => {
     getDishies().then((res: any) => {
+      console.log("dans la page", res.data);
+
       setDishies(res.data);
     });
   }, []);
 
   useEffect(() => {
-    const entrance = dishies.filter((dish: any) => dish.categorie_id == 1);
+    const entrance = dishies.filter((dish: any) => dish.categories.id == 1);
     setEntrances(entrance);
 
-    const flat = dishies.filter((dish: any) => dish.categorie_id == 2);
+    const flat = dishies.filter((dish: any) => dish.categories.id == 2);
     setFlats(flat);
 
-    const dessert = dishies.filter((dish: any) => dish.categorie_id == 3);
+    const dessert = dishies.filter((dish: any) => dish.categories.id == 3);
     setDesserts(dessert);
   }, [dishies]);
 

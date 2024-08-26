@@ -135,7 +135,7 @@ export default function Home() {
       <Toaster position="top-right"></Toaster>
       <div className="w-1/2 text-center m-auto text-xl space-y-4">
         <h1 className="text-2xl font-bold">
-          Bienvenue à La Place{" "}
+          Bienvenue à La Place
           <span className="text-[#FF0202] text-2xl">R</span>ouge !
         </h1>
         <p>
@@ -161,12 +161,12 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="flex justify-around w-11/12 m-auto">
+      <div className="flex items-center justify-around w-11/12 m-auto">
         {pictures &&
           pictures.map((picture: any) => {
             return (
               <img
-                className="w-1/6"
+                className="w-1/6 h-fit"
                 src={picture.picture}
                 alt="Image d'un plat"
               />
