@@ -10,8 +10,6 @@ const Menu = () => {
 
   useEffect(() => {
     getMenus().then((res: any) => {
-      console.log(res.data);
-
       setMenus(res.data);
     });
   }, []);
@@ -28,8 +26,8 @@ const Menu = () => {
                 {Menu.name} {Menu.price} euros
               </h2>
               <div className="mx-5 lg:mx-10 flex flex-wrap justify-center entrancesDishies">
-                {Menu.dish &&
-                  Menu.dish.map((dish: any) => {
+                {Menu.dishies &&
+                  Menu.dishies.map((dish: any) => {
                     return (
                       <Card
                         img={dish.picture}
