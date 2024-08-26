@@ -3,7 +3,7 @@ import axios from "axios";
 export async function sendBooking(formulaire: any) {
   console.log(formulaire);
 
-  let url = `${process.env.NEXT_PUBLIC_API_URL}api/reservation/new`;
+  let url = `${process.env.NEXT_PUBLIC_API_URL}reservation/api/new`;
 
   let axiosConfig = {
     headers: {
