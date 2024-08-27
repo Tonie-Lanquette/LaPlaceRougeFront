@@ -4,6 +4,7 @@ import { Card } from "../Components/Card";
 import { getDishies } from "../Services/dishies";
 import { Navbar } from "../Components/Navbar";
 import { PhotoHeader } from "../Components/PhotoHeader";
+import Footer from "../Components/Footer";
 
 const Carte = () => {
   const [dishies, setDishies] = useState([]);
@@ -83,6 +84,7 @@ const Carte = () => {
             })}
         </div>
       </section>
+      <Footer></Footer>
     </main>
   );
 };

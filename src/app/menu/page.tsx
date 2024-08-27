@@ -4,15 +4,19 @@ import { Card } from "../Components/Card";
 import { getMenus } from "../Services/menus";
 import { Navbar } from "../Components/Navbar";
 import { PhotoHeader } from "../Components/PhotoHeader";
+import Footer from "../Components/Footer";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
 
   useEffect(() => {
     getMenus().then((res: any) => {
+      console.log(res.data);
+
       setMenus(res.data);
     });
   }, []);
+
   return (
     <main className="font-sans">
       <Navbar></Navbar>
@@ -41,6 +45,7 @@ const Menu = () => {
             </section>
           );
         })}
+      <Footer></Footer>
     </main>
   );
 };

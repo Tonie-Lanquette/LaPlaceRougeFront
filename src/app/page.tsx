@@ -10,6 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Navbar } from "./Components/Navbar";
 import { fr as localeFr } from "date-fns/locale";
 import { Locale } from "date-fns";
+import Footer from "./Components/Footer";
 
 registerLocale("fr", localeFr as Locale);
 
@@ -160,11 +161,9 @@ export default function Home() {
 
       <Toaster position="top-right"></Toaster>
       <div className="w-1/2 text-center m-auto text-xl space-y-4">
-        
         <h1 className="text-2xl font-bold">
           Bienvenue à La Place
-
-          <span className="text-[#FF0202] text-2xl">R</span>ouge !
+          <span className="text-[#FF0202] text-2xl"> R</span>ouge !
         </h1>
         <p>
           Découvrez la cuisine russe traditionnelle, sublimée par des produits
@@ -309,6 +308,7 @@ export default function Home() {
           </button>
         </div>
       </section>
+      <Footer></Footer>
     </main>
   );
 }
