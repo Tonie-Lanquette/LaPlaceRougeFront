@@ -11,8 +11,6 @@ const Menu = () => {
 
   useEffect(() => {
     getMenus().then((res: any) => {
-      console.log(res.data);
-
       setMenus(res.data);
     });
   }, []);

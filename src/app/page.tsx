@@ -65,7 +65,7 @@ export default function Home() {
     if (numberPeople < maxNumberPeople) {
       setNumberPeople(numberPeople + 1);
     } else {
-      setNumberPeople(1);
+      setNumberPeople(0);
       toast.error(
         `Il ne reste plus que ` + maxNumberPeople + ` places pour ce jour.`
       );
