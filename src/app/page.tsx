@@ -15,7 +15,7 @@ import Footer from "./Components/Footer";
 registerLocale("fr", localeFr as Locale);
 
 export default function Home() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
 
   const [pictures, setPictures] = useState([]);
 
@@ -210,7 +210,7 @@ export default function Home() {
           {/* Partie gauche */}
           <section className="flex flex-col items-center">
             <p className="rounded-lg px-2 py-1.5 bg-white border-2 border-black text-center mx-3 my-4">
-              {startDate.toLocaleDateString()}
+              {startDate?.toLocaleDateString()}
             </p>
 
             <DatePicker
