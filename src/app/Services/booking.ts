@@ -49,3 +49,4 @@ export async function getMaxNumberPeople(dataDay: any) {
       return res;
     });
 }
+
